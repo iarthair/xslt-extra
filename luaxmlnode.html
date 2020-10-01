@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Brian Stafford">
+  
+  <link rel="shortcut icon" href="img/favicon.ico">
+  <title>XML node - Libxslt Extension Modules</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="css/theme.css" />
+  <link rel="stylesheet" href="css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "XML node";
+    var mkdocs_page_input_path = "luaxmlnode.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="js/jquery-2.1.1.min.js" defer></script>
+  <script src="js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="." class="icon icon-home"> Libxslt Extension Modules</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="index.html">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="download.html">Download</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Functions</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="functions.html">String</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="uri-functions.html">URI</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="lang.html">Language Tags</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="misc-functions.html">Miscellaneous</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="regexp.html">Posix RE</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="script.html">Scripts</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Lua</span></p>
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="lualibxslt.html">Libxslt</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="luaxmldoc.html">XML doc</a>
+                    </li>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="luaxmlnode.html">XML node</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#properties">Properties</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#nodename">node:name</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#noderoot">node:root</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#nodedocument">node:document</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#nodelocal_name">node:local_name</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#nodeprefix">node:prefix</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#nodenamespace_uri">node:namespace_uri</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#nodeattr">node:attr</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#nodeparent">node:parent</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#nodenext_sibling">node:next_sibling</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#nodeprevious_sibling">node:previous_sibling</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#nodefirst_child">node:first_child</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#nodelast_child">node:last_child</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#methods">Methods</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#nodeappend_child">node:append_child()</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#nodechildren">node:children()</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#nodesetattr">node:setattr()</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#nodegetattr">node:getattr()</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#nodeunsetattr">node:unsetattr()</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#nodecopy">node:copy()</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#nodereplace">node:replace()</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#nodeunlink">node:unlink()</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#nodenew">node:new()</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#nodetext">node:text()</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#nodeparse">node:parse()</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#nodeserialize">node:serialize()</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#nodenodeset">node:nodeset()</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#nodenewattr">node:newattr()</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#tostring">tostring()</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#operators">Operators</a>
+    </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="luaxpathnodeset.html">XSL-T node-set</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href=".">Libxslt Extension Modules</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Lua &raquo;</li>
+        
+      
+    
+    <li>XML node</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/iarthair/xslt-extra/edit/master/docs/luaxmlnode.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="xml-nodes">XML Nodes</h1>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>Lua XML documentation is still incomplete</p>
+</div>
+<p>XML element nodes are made available with the following API.</p>
+<h2 id="properties">Properties</h2>
+<h3 id="nodename">node:name</h3>
+<pre><code class="lua">local string = node:name
+</code></pre>
+
+<h3 id="noderoot">node:root</h3>
+<pre><code class="lua">local root = node:root
+</code></pre>
+
+<h3 id="nodedocument">node:document</h3>
+<pre><code class="lua">local doc = node:document
+</code></pre>
+
+<h3 id="nodelocal_name">node:local_name</h3>
+<pre><code class="lua">local string = node:local_name
+</code></pre>
+
+<h3 id="nodeprefix">node:prefix</h3>
+<pre><code class="lua">local string = node:prefix
+</code></pre>
+
+<h3 id="nodenamespace_uri">node:namespace_uri</h3>
+<pre><code class="lua">local string = node:namespace_uri
+</code></pre>
+
+<h3 id="nodeattr">node:attr</h3>
+<pre><code class="lua">node:attr[name] = text
+local attr = node:attr[name]
+</code></pre>
+
+<p>Set or retrieve an attribute value belonging to the node.  Equivalent to the
+<code>setattr()</code> and <code>getattr()</code> methods respectively.</p>
+<h3 id="nodeparent">node:parent</h3>
+<pre><code class="lua">local node = node:parent
+</code></pre>
+
+<h3 id="nodenext_sibling">node:next_sibling</h3>
+<pre><code class="lua">local sibling = node:next_sibling
+</code></pre>
+
+<h3 id="nodeprevious_sibling">node:previous_sibling</h3>
+<pre><code class="lua">local sibling = node:previous_sibling
+</code></pre>
+
+<h3 id="nodefirst_child">node:first_child</h3>
+<pre><code class="lua">local child = node:first_child
+</code></pre>
+
+<h3 id="nodelast_child">node:last_child</h3>
+<pre><code class="lua">local child = node:last_child
+</code></pre>
+
+<h2 id="methods">Methods</h2>
+<h3 id="nodeappend_child">node:append_child()</h3>
+<pre><code class="lua">node:append_child(child)
+</code></pre>
+
+<ul>
+<li>child: child to append</li>
+</ul>
+<p>Append <code>child</code> to the end of the node's child list.</p>
+<h3 id="nodechildren">node:children()</h3>
+<pre><code class="lua">local child
+
+for child in node:children()
+do
+    -- process child
+end
+</code></pre>
+
+<p>Return an iterator function for the node's children. This is a more convenient
+alternative to explicitly looping through nodes from <code>node:first_child</code> to
+<code>node:last_child</code> via the <code>child:next_sibling</code> properties.</p>
+<h3 id="nodesetattr">node:setattr()</h3>
+<pre><code class="lua">node:setattr(name, value)
+</code></pre>
+
+<ul>
+<li>name: string with name of attribute</li>
+<li>value: string with text value of attribute</li>
+</ul>
+<p>Set the value of the node's attribute (property).</p>
+<h3 id="nodegetattr">node:getattr()</h3>
+<pre><code class="lua">value = node:getattr(name)
+</code></pre>
+
+<ul>
+<li>name: string with name of attribute</li>
+</ul>
+<p>Return a string with the value of the node's property.</p>
+<h3 id="nodeunsetattr">node:unsetattr()</h3>
+<pre><code class="lua">node:unsetattr(name)
+</code></pre>
+
+<ul>
+<li>name: string with name of attribute to remove.</li>
+</ul>
+<p>Remove attribute.</p>
+<h3 id="nodecopy">node:copy()</h3>
+<pre><code class="lua">node:copy()
+</code></pre>
+
+<h3 id="nodereplace">node:replace()</h3>
+<pre><code class="lua">node:replace()
+</code></pre>
+
+<h3 id="nodeunlink">node:unlink()</h3>
+<pre><code class="lua">node:unlink()
+</code></pre>
+
+<h3 id="nodenew">node:new()</h3>
+<pre><code class="lua">node:new(name)
+</code></pre>
+
+<ul>
+<li>name: string with new node local-name</li>
+</ul>
+<p>Create a new node belonging to the same document as the reference node.</p>
+<h3 id="nodetext">node:text()</h3>
+<pre><code class="lua">node:text(content)
+</code></pre>
+
+<ul>
+<li>content: string with new text content</li>
+</ul>
+<p>Create a new text node belonging to the same document as the reference node.</p>
+<h3 id="nodeparse">node:parse()</h3>
+<pre><code class="lua">node:parse(content)
+</code></pre>
+
+<ul>
+<li>content: string with content to parse</li>
+</ul>
+<p>Parse a string containing a well-balanced XML chunk and add the result to
+the reference node's list of children.</p>
+<h3 id="nodeserialize">node:serialize()</h3>
+<pre><code class="lua">node:serialize(func)
+node:serialize(function (text) io.write (text) end)
+</code></pre>
+
+<ul>
+<li>func: writer function.</li>
+</ul>
+<p>Serialise the XML document. The argument is a function repeatedly called to
+write the resulting text.</p>
+<h3 id="nodenodeset">node:nodeset()</h3>
+<pre><code class="lua">local node_set = node:nodeset()
+</code></pre>
+
+<p>Create a new nodeset containing the node.</p>
+<h3 id="nodenewattr">node:newattr()</h3>
+<pre><code class="lua">node:attr(name,text)
+</code></pre>
+
+<ul>
+<li>name: string with attribute name.</li>
+<li>text: string with text content for the attribute.</li>
+</ul>
+<p>Create a new attribute on the node with the specified name and content.</p>
+<h2 id="tostring">tostring()</h2>
+<p>The Lua tostring() function returns the string value of the element content.</p>
+<h2 id="operators">Operators</h2>
+<p>The following operators are defined</p>
+<ul>
+<li><code>=</code>:</li>
+<li><code>&lt;</code>:</li>
+<li><code>&lt;=</code>:</li>
+</ul>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="luaxpathnodeset.html" class="btn btn-neutral float-right" title="XSL-T node-set">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="luaxmldoc.html" class="btn btn-neutral" title="XML doc"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+      <p>© 2020 Brian Stafford</p>
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/iarthair/xslt-extra/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="luaxmldoc.html" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="luaxpathnodeset.html" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '.';</script>
+    <script src="js/theme.js" defer></script>
+      <script src="search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

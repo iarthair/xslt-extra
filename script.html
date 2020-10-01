@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Brian Stafford">
+  
+  <link rel="shortcut icon" href="img/favicon.ico">
+  <title>Scripts - Libxslt Extension Modules</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="css/theme.css" />
+  <link rel="stylesheet" href="css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Scripts";
+    var mkdocs_page_input_path = "script.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="js/jquery-2.1.1.min.js" defer></script>
+  <script src="js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="." class="icon icon-home"> Libxslt Extension Modules</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="index.html">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="download.html">Download</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Functions</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="functions.html">String</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="uri-functions.html">URI</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="lang.html">Language Tags</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="misc-functions.html">Miscellaneous</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="regexp.html">Posix RE</a>
+                    </li>
+                </ul>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="script.html">Scripts</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#script">&lt;script></a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#implements-prefix">implements-prefix</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#language">language</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#src">src</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#archive">archive</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Lua</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="lualibxslt.html">Libxslt</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="luaxmldoc.html">XML doc</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="luaxmlnode.html">XML node</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="luaxpathnodeset.html">XSL-T node-set</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href=".">Libxslt Extension Modules</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Scripts</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/iarthair/xslt-extra/edit/master/docs/script.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="exslt-script-extension">EXSLT Script Extension</h1>
+<p>This module implements the <code>&lt;script&gt;</code> extension element decribed in
+<a href="http://exslt.org/func/elements/script/index.html">exslt.org</a> with a few
+minor differences.</p>
+<h2 id="script">&lt;script></h2>
+<pre><code class="xml">xmlns:func=&quot;http://exslt.org/functions&quot;
+
+&lt;func:script implements-prefix=ncname
+             language=qname
+             src=uri-reference
+             archive=uri-reference/&gt;
+</code></pre>
+
+<p>The top-level <code>&lt;func:script&gt;</code> element provides an implementation of extension
+functions in the specified namespace.</p>
+<p>The function implementations may be provided as a separate resource or as
+element content.</p>
+<h3 id="implements-prefix">implements-prefix</h3>
+<p>The <code>implements-prefix</code> attribute is an <a href="https://www.w3.org/TR/REC-xml-names/#ns-decl" title="Declaring Namespaces">ncname</a> expanded to a URI using the
+namespace declarations in scope for the script element.  This URI is the
+namespace URI identifying the <a href="https://www.w3.org/TR/REC-xml-names/#dt-localname" title="Basic Concepts">local name</a> of the XPath extension functions
+being implemented.</p>
+<h3 id="language">language</h3>
+<p>A <a href="https://www.w3.org/TR/REC-xml-names/#ns-qualnames" title="Qualified Names">qname</a> identifying programming language used for the extension.  If the
+language value is not supported, the script element is ignored.</p>
+<h3 id="src">src</h3>
+<p>Optional URI for the resource containing the extension functions.  A relative
+URI is resolved relative to the <a href="https://www.w3.org/TR/1999/REC-xslt-19991116#base-uri" title="Base URI">base URI</a> of the script element.</p>
+<p>If omitted the script is read from the element content instead.  Element
+content should be protected by enclosing it in a CDATA section or by using XML
+entities where these conflict with symbols used in the programming language.
+An example is given below.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Currently the <code>src</code> property is not fully implemented, only resources
+that are pathnames identifying local files may be specified.</p>
+</div>
+<h3 id="archive">archive</h3>
+<p>Not implemented, ignored.</p>
+<h1 id="lua">Lua</h1>
+<p>Currently the only supported script language is
+<a href="https://www.lua.org/manual/5.3/">Lua 5.3</a>. The <code>language</code> property should be
+specified as <code>Lua</code>.</p>
+<p>Lua functions are exported when the script is compiled, by returning a table of
+functions where the key is a string naming the XPath function.</p>
+<p>For example the following will create the XPath functions <code>my:func1()</code>,
+<code>my:func2()</code> and <code>my:func3()</code>. Func3() illustrates that it is possible to
+create XPath functions with a closure.</p>
+<pre><code class="xml">&lt;xsl:stylesheet ...
+                xmlns:func=&quot;http://exslt.org/functions&quot;
+                xmlns:my=&quot;http://example.org/lua&quot;
+                extension-element-prefixes=&quot;func&quot;&gt;
+
+&lt;func:script implements-prefix=&quot;my&quot; language=&quot;Lua&quot; src=&quot;functions.lua&quot;/&gt;
+
+...
+
+&lt;/xsl:stylesheet&gt;
+</code></pre>
+
+<pre><code class="lua">-- content of functions.lua
+
+exports = {}
+
+function exports.func1(...)
+    return &quot;&quot;
+end
+
+function exports.func2(...)
+    return &quot;&quot;
+end
+
+function func3_factory()
+    local closure_var = &quot;&quot;
+
+    return function(...)
+        -- do some work involving the closure variables
+        return closure_var
+    end
+end
+
+exports.func3 = func3_factory()
+
+return exports
+</code></pre>
+
+<p>If the above example were implemented as script element content it would read
+as follows. In this case to avoid issues with CDATA quoting, multi-line
+comments and strings should be written as <code>--[=[ ... ]=]</code> and <code>[=[ ... ]=]</code>
+respectively.</p>
+<pre><code class="xml">&lt;xsl:stylesheet ...
+                xmlns:func=&quot;http://exslt.org/functions&quot;
+                xmlns:my=&quot;http://example.org/lua&quot;
+                extension-element-prefixes=&quot;func&quot;&gt;
+
+&lt;func:script implements-prefix=&quot;my&quot; language=&quot;Lua&quot;&gt;
+&lt;![CDATA[
+exports = {}
+
+function exports.func1(...)
+    return &quot;&quot;
+end
+
+function exports.func2(...)
+    return &quot;&quot;
+end
+
+function func3_factory()
+    local closure_var = &quot;&quot;
+
+    return function(...)
+        -- do some work involving the closure variables
+        return closure_var
+    end
+end
+
+exports.func3 = func3_factory()
+
+return exports
+]]&gt;
+&lt;/func:script&gt;
+
+...
+
+&lt;/xsl:stylesheet&gt;
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="lualibxslt.html" class="btn btn-neutral float-right" title="Libxslt">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="regexp.html" class="btn btn-neutral" title="Posix RE"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+      <p>© 2020 Brian Stafford</p>
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/iarthair/xslt-extra/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="regexp.html" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="lualibxslt.html" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '.';</script>
+    <script src="js/theme.js" defer></script>
+      <script src="search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
