@@ -1,0 +1,24 @@
+site_name: Libxslt Extension Modules
+theme: readthedocs
+repo_url: https://github.com/iarthair/xslt-extra
+use_directory_urls: false
+site_author: 'Brian Stafford'
+copyright: '© 2020 Brian Stafford'
+markdown_extensions:
+    - admonition
+nav:
+    - Home: index.md
+    - Download: download.md
+    - Usage: usage.md
+    - Functions:
+        - String: functions.md
+        - URI: uri-functions.md
+        - Language Tags: lang.md
+        - Miscellaneous: misc-functions.md
+        - Posix RE: regexp.md
+    - Scripts: script.md
+    - Lua:
+        - Libxslt: lualibxslt.md
+        - XML doc: luaxmldoc.md
+        - XML node: luaxmlnode.md
+        - XSL-T node-set: luaxpathnodeset.md
