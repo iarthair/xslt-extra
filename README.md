@@ -18,3 +18,4 @@ rather than identical.
 The Libxslt Extension Modules are copyright © 2020 Brian Stafford.
 They are released under the [MIT Licence][1].
 
+[1]: https://opensource.org/licenses/mit-license.html
